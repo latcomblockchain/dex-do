@@ -479,22 +479,103 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
+    /* NAV */
+    nav { padding: 16px 20px; }
     .nav-links { display: none; }
-    .hero { padding: 0 24px 60px; }
+
+    /* Hamburger button */
+    .nav-burger {
+      display: flex; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .nav-burger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--white); transition: all 0.3s;
+    }
+
+    /* Mobile menu overlay */
+    .nav-mobile {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black); z-index: 200;
+      flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 18px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--white); font-family: 'IBM Plex Mono', monospace;
+    }
+    .nav-mobile a.nav-cta { color: var(--red); }
+    .nav-mobile-close {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 28px; color: var(--white); background: none;
+      border: none; cursor: pointer; font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* HERO */
+    .hero { padding: 100px 20px 60px; min-height: 100svh; }
+    .hero h1 { font-size: clamp(36px, 10vw, 60px); }
+    .hero-actions { flex-direction: column; gap: 12px; }
+    .hero-actions a { text-align: center; width: 100%; }
+    .hero-logo { font-size: 120px; }
+
+    /* SPLIT BLOCK */
     .split-block { grid-template-columns: 1fr; }
+    .split-left { padding: 24px 20px; border-bottom: 1px solid var(--border); border-right: none; }
+    .split-right { padding: 32px 20px; }
     .split-divider { display: none; }
-    .section { padding: 64px 24px; }
-    .pm-grid { grid-template-columns: 1fr; }
-    .pm-left-col { border-right: none; border-bottom: 1px solid var(--border); }
-    .mm-grid { grid-template-columns: 1fr; }
-    .mm-card { border-right: none; border-bottom: 1px solid var(--border); }
+    .split-menu { display: flex; overflow-x: auto; gap: 0; padding-bottom: 0; flex-direction: row; }
+    .split-menu li { white-space: nowrap; padding: 12px 16px !important; border-bottom: none !important; border-right: 1px solid var(--border); font-size: 11px !important; }
+    .split-menu li::after { display: none; }
+    .split-menu li.active { border-bottom: 2px solid var(--red) !important; }
+    .split-menu::-webkit-scrollbar { display: none; }
+
+    /* SECTIONS */
+    .section { padding: 56px 20px; }
+    .section-h { font-size: clamp(28px, 7vw, 48px); }
+
+    /* PREDICTION MARKETS */
+    .pm-grid { grid-template-columns: 1fr; gap: 0; }
+    .pm-left-col { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 0; }
+    .pm-stats { grid-template-columns: 1fr 1fr; gap: 0; }
+    .pm-stat { padding: 24px 16px; }
+    .pm-stat-n { font-size: 28px; }
+
+    /* MM SECTION */
+    .mm-tabs-row { overflow-x: auto; }
+    .mm-tabs-row::-webkit-scrollbar { display: none; }
+    .mm-tab { white-space: nowrap; font-size: 10px; padding: 12px 16px; }
+    .mm-spec-grid { grid-template-columns: 1fr; }
+    .mm-spec-card { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 20px; }
+    .mm-spec-card:last-child { border-bottom: none; }
     .license-grid { grid-template-columns: 1fr; }
-    .license-card { border-right: none; border-bottom: 1px solid var(--border); }
-    .feat-cols { grid-template-columns: 1fr 1fr; }
-    .feat-col { border-right: none; border-bottom: 1px solid var(--border); }
-    .patent-section, .whitelist-section { grid-template-columns: 1fr; padding: 64px 24px; }
-    footer { padding: 32px 24px; }
+    .license-card { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 20px; }
+
+    /* TECHNOLOGY */
+    .feat-cols { grid-template-columns: 1fr; }
+    .feat-col { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 20px; }
+    .feat-col:last-child { border-bottom: none; }
+
+    /* PATENT & WHITELIST */
+    .patent-section { grid-template-columns: 1fr; padding: 56px 20px; gap: 40px; }
+    .whitelist-section { grid-template-columns: 1fr; padding: 56px 20px; gap: 40px; }
+
+    /* FOOTER */
+    footer { padding: 32px 20px; }
+    .footer-row { flex-direction: column; gap: 32px; align-items: flex-start; }
+    .footer-nav { flex-wrap: wrap; gap: 16px; }
+    .footer-socials { flex-wrap: wrap; gap: 16px; }
+
+    /* MARQUEE */
+    .marquee-inner { animation-duration: 20s; }
+  }
+</style>
+
+<style>
+  /* Hamburger — hidden on desktop */
+  .nav-burger { display: none; }
+  .nav-mobile { display: none; }
+  @media (max-width: 900px) {
+    .nav-burger { display: flex; }
   }
 </style>
 </head>
@@ -509,7 +590,30 @@
     <li><a href="#technology">Technology</a></li>
     <li><a href="/whitelist" class="nav-cta">Apply to Whitelist</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="#prediction-markets" class="nav-mobile-link">Prediction Markets</a>
+  <a href="#for-mm" class="nav-mobile-link">Market Makers</a>
+  <a href="#technology" class="nav-mobile-link">Technology</a>
+  <a href="/whitelist" class="nav-cta nav-mobile-link">Apply to Whitelist</a>
+</div>
+
+<script>
+  const burger = document.getElementById('navBurger');
+  const mobile = document.getElementById('navMobile');
+  const close = document.getElementById('navClose');
+  burger.addEventListener('click', () => mobile.classList.add('open'));
+  close.addEventListener('click', () => mobile.classList.remove('open'));
+  mobile.querySelectorAll('.nav-mobile-link').forEach(a => {
+    a.addEventListener('click', () => mobile.classList.remove('open'));
+  });
+</script>
 
 <!-- HERO -->
 <section class="hero" style="padding-top:100px;">
