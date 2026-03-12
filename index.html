@@ -578,23 +578,36 @@
     .nav-links { display: none !important; }
     .nav-burger { display: flex !important; }
     .nav-mobile.open { display: flex !important; }
+    /* Fix split block overflow */
+    .split-right { overflow: hidden; }
+    .split-panel h2 { font-size: 18px !important; word-break: break-word; }
+    .split-bullets li { font-size: 12px; word-break: break-word; }
   }
 </style>
 <script>
-  function applyNavMode() {
-    const burger = document.getElementById('navBurger');
-    const links = document.querySelector('.nav-links');
-    if (!burger || !links) return;
-    if (window.innerWidth <= 900) {
-      burger.style.cssText = 'display:flex!important';
-      links.style.cssText = 'display:none!important';
-    } else {
-      burger.style.cssText = 'display:none!important';
-      links.style.cssText = '';
+  // Run immediately — before page renders
+  (function() {
+    function applyNavMode() {
+      const burger = document.getElementById('navBurger');
+      const links = document.querySelector('.nav-links');
+      if (!burger || !links) return;
+      if (window.innerWidth <= 900) {
+        burger.style.setProperty('display', 'flex', 'important');
+        links.style.setProperty('display', 'none', 'important');
+      } else {
+        burger.style.removeProperty('display');
+        links.style.removeProperty('display');
+      }
     }
-  }
-  window.addEventListener('resize', applyNavMode);
-  window.addEventListener('load', applyNavMode);
+    // Run on load and resize
+    document.addEventListener('DOMContentLoaded', applyNavMode);
+    window.addEventListener('resize', applyNavMode);
+    // Also run after short delay to catch any CSS override
+    window.addEventListener('load', function() {
+      applyNavMode();
+      setTimeout(applyNavMode, 100);
+    });
+  })();
 </script>
 </head>
 <body>
