@@ -572,10 +572,12 @@
 
 <style>
   /* Hamburger — hidden on desktop */
-  .nav-burger { display: none; }
-  .nav-mobile { display: none; }
+  .nav-burger { display: none !important; }
+  .nav-mobile { display: none !important; }
   @media (max-width: 900px) {
-    .nav-burger { display: flex; }
+    .nav-links { display: none !important; }
+    .nav-burger { display: flex !important; }
+    .nav-mobile.open { display: flex !important; }
   }
 </style>
 </head>
