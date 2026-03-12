@@ -22,7 +22,7 @@
     --border-red: rgba(204,34,0,0.3);
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { overflow-x: hidden; max-width: 100%; }
   html { scroll-behavior: smooth; }
 
   body {
@@ -468,7 +468,7 @@
   .footer-socials a { font-size: 10px; color: var(--white-dim); letter-spacing: 1px; transition: color 0.2s; }
   .footer-socials a:hover { color: var(--red); }
   .footer-legal {
-    font-size: 10px; color: var(--white-faint); line-height: 1.8; max-width: 960px;
+    font-size: 10px; color: var(--white-faint); line-height: 1.8; max-width: 900px;
     padding-top: 32px; border-top: 1px solid var(--border);
   }
   .footer-bottom {
@@ -580,6 +580,22 @@
     .nav-mobile.open { display: flex !important; }
   }
 </style>
+<script>
+  function applyNavMode() {
+    const burger = document.getElementById('navBurger');
+    const links = document.querySelector('.nav-links');
+    if (!burger || !links) return;
+    if (window.innerWidth <= 900) {
+      burger.style.cssText = 'display:flex!important';
+      links.style.cssText = 'display:none!important';
+    } else {
+      burger.style.cssText = 'display:none!important';
+      links.style.cssText = '';
+    }
+  }
+  window.addEventListener('resize', applyNavMode);
+  window.addEventListener('load', applyNavMode);
+</script>
 </head>
 <body>
 
@@ -871,30 +887,82 @@
     </div>
 
     <div class="pm-right-col">
-      <ul class="pm-feature-list">
-        <li class="pm-feature-item">
-          <div class="pm-feature-key">Phase 1: PMP</div>
-          <div class="pm-feature-val">Every market opens with a <strong>Pari-Mutuel Pool</strong> — tradable immediately, even before professional liquidity arrives. Intuitive probability formation.</div>
+      <ul class="pm-feature-list accordion-list">
+        <li class="pm-feature-item accordion-item">
+          <div class="pm-feature-key accordion-trigger">Phase 1: PMP<span class="accordion-arrow">+</span></div>
+          <div class="pm-feature-val accordion-body">Every market opens with a <strong>Pari-Mutuel Pool</strong> — tradable immediately, even before professional liquidity arrives. Intuitive probability formation.</div>
         </li>
-        <li class="pm-feature-item">
-          <div class="pm-feature-key">Phase 2: Dark Order Book</div>
-          <div class="pm-feature-val">Markets transition to <strong>continuous dark order book</strong> trading: hidden price, hidden size, microsecond on-chain matching. No strategy broadcasting.</div>
+        <li class="pm-feature-item accordion-item">
+          <div class="pm-feature-key accordion-trigger">Phase 2: Dark Order Book<span class="accordion-arrow">+</span></div>
+          <div class="pm-feature-val accordion-body">Markets transition to <strong>continuous dark order book</strong> trading: hidden price, hidden size, microsecond on-chain matching. No strategy broadcasting.</div>
         </li>
-        <li class="pm-feature-item">
-          <div class="pm-feature-key">Open Oracle Protocol</div>
-          <div class="pm-feature-val">Multiple oracle providers stream signed, verifiable <strong>real-time updates</strong> directly into markets. If an oracle exists — the market exists.</div>
+        <li class="pm-feature-item accordion-item">
+          <div class="pm-feature-key accordion-trigger">Open Oracle Protocol<span class="accordion-arrow">+</span></div>
+          <div class="pm-feature-val accordion-body">Multiple oracle providers stream signed, verifiable <strong>real-time updates</strong> directly into markets. If an oracle exists — the market exists.</div>
         </li>
-        <li class="pm-feature-item">
-          <div class="pm-feature-key">Full-Set Positions</div>
-          <div class="pm-feature-val">Mint a complete set: deposit collateral, receive one unit of every outcome. <strong>Two-sided liquidity</strong> without a directional view. Redeem at resolution.</div>
+        <li class="pm-feature-item accordion-item">
+          <div class="pm-feature-key accordion-trigger">Full-Set Positions<span class="accordion-arrow">+</span></div>
+          <div class="pm-feature-val accordion-body">Mint a complete set: deposit collateral, receive one unit of every outcome. <strong>Two-sided liquidity</strong> without a directional view. Redeem at resolution.</div>
         </li>
-        <li class="pm-feature-item">
-          <div class="pm-feature-key">Permissionless Markets</div>
-          <div class="pm-feature-val">Anyone can launch a market on any event. <strong>No approvals</strong>, no gatekeepers. Mechanism for permissionless expansion of the market universe.</div>
+        <li class="pm-feature-item accordion-item">
+          <div class="pm-feature-key accordion-trigger">Permissionless Markets<span class="accordion-arrow">+</span></div>
+          <div class="pm-feature-val accordion-body">Anyone can launch a market on any event. <strong>No approvals</strong>, no gatekeepers. Mechanism for permissionless expansion of the market universe.</div>
         </li>
       </ul>
     </div>
   </div>
+
+  <!-- Accordion styles + JS -->
+  <style>
+    .accordion-trigger {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .accordion-arrow {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--white-dim);
+      transition: transform 0.25s;
+      margin-left: 12px;
+      flex-shrink: 0;
+    }
+    .accordion-item.open .accordion-arrow {
+      transform: rotate(45deg);
+      color: var(--red);
+    }
+    /* On desktop — always show body, hide arrow */
+    @media (min-width: 901px) {
+      .accordion-body { display: block !important; }
+      .accordion-arrow { display: none; }
+    }
+    /* On mobile — collapsed by default */
+    @media (max-width: 900px) {
+      .accordion-body { display: none; overflow: hidden; }
+      .accordion-item.open .accordion-body { display: block; }
+    }
+  </style>
+  <script>
+    (function() {
+      function initAccordion() {
+        if (window.innerWidth > 900) return;
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+          trigger.addEventListener('click', function() {
+            const item = this.closest('.accordion-item');
+            const isOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+            // Open clicked if was closed
+            if (!isOpen) item.classList.add('open');
+          });
+        });
+      }
+      window.addEventListener('load', initAccordion);
+      window.addEventListener('resize', initAccordion);
+    })();
+  </script>
 
   <!-- Potential stats -->
   <div class="pm-stats">
