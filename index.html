@@ -20,16 +20,68 @@
     --white-faint: #444444;
     --border: rgba(255,255,255,0.08);
     --border-red: rgba(204,34,0,0.3);
+
+    /* Semantic tokens — dark mode default */
+    --bg:         var(--black);
+    --bg2:        var(--black2);
+    --bg3:        var(--black3);
+    --text:       var(--white);
+    --text-dim:   var(--white-dim);
+    --text-faint: var(--white-faint);
+    --line:       var(--border);
+    --nav-bg:     rgba(13,13,13,0.92);
   }
+
+  /* ─── LIGHT THEME ─── */
+  html.light {
+    --bg:         #f4f3f0;
+    --bg2:        #eeede9;
+    --bg3:        #e6e5e0;
+    --text:       #111111;
+    --text-dim:   #555555;
+    --text-faint: #999999;
+    --line:       rgba(0,0,0,0.1);
+    --nav-bg:     rgba(244,243,240,0.95);
+    --border:     rgba(0,0,0,0.1);
+    --border-red: rgba(204,34,0,0.25);
+    --white:      #111111;
+    --white-dim:  #555555;
+    --white-faint:#999999;
+    --black:      #f4f3f0;
+    --black2:     #eeede9;
+    --black3:     #e6e5e0;
+    --red-dim:    rgba(204,34,0,0.1);
+  }
+
+  /* ─── THEME TOGGLE BUTTON ─── */
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--text-faint); }
+  .theme-toggle svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
 
   html, body { overflow-x: hidden; max-width: 100%; }
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--black);
-    color: var(--white);
+    background: var(--bg);
+    color: var(--text);
     font-family: 'IBM Plex Mono', monospace;
     overflow-x: hidden;
+    transition: background 0.25s, color 0.25s;
   }
 
   a { text-decoration: none; color: inherit; }
@@ -39,9 +91,10 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 20px 48px;
-    background: rgba(13,13,13,0.92);
+    background: var(--nav-bg);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.25s;
   }
   .nav-logo {
     font-size: 15px; font-weight: 700; color: var(--white);
@@ -56,11 +109,14 @@
   .nav-links a:hover { color: var(--white); }
   .nav-cta {
     color: var(--red) !important;
-    border: 1px solid var(--border-red);
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
     padding: 8px 20px;
     transition: background 0.2s !important;
   }
   .nav-cta:hover { background: var(--red-dim) !important; }
+  .nav-cta:focus { outline: none !important; box-shadow: none !important; }
 
   /* ─── HERO ─── */
   .hero {
@@ -88,7 +144,7 @@
     user-select: none; pointer-events: none;
   }
   .hero-tag {
-    font-size: 11px; color: var(--white-dim);
+    font-size: 13px; color: var(--text-dim);
     letter-spacing: 3px; text-transform: uppercase;
     margin-bottom: 32px;
     display: flex; align-items: center; gap: 12px;
@@ -172,20 +228,20 @@
   .split-menu li .value { color: var(--white); font-weight: 700; }
   .split-menu li.active .value { color: var(--red); }
   .split-right h2 {
-    font-size: clamp(20px, 2.5vw, 28px);
+    font-size: clamp(24px, 3.2vw, 40px);
     font-weight: 700; margin-bottom: 36px;
     line-height: 1.3;
   }
   .split-bullets { list-style: none; display: flex; flex-direction: column; gap: 18px; }
   .split-bullets li {
-    font-size: 13px; color: var(--white-dim); line-height: 1.6;
+    font-size: 16px; color: var(--text-dim); line-height: 1.75;
     padding-left: 16px; position: relative;
   }
   .split-bullets li::before {
     content: '·'; position: absolute; left: 0; color: var(--red);
     font-size: 16px; line-height: 1.4;
   }
-  .split-bullets li strong { color: var(--white); font-weight: 700; }
+  .split-bullets li strong { color: var(--text); font-weight: 700; }
 
   /* ─── SECTION BASE ─── */
   .section {
@@ -203,13 +259,13 @@
     height: 1px; background: var(--red);
   }
   .section-h {
-    font-size: clamp(28px, 4vw, 52px);
-    font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;
-    margin-bottom: 24px;
+    font-size: clamp(40px, 5.5vw, 76px);
+    font-weight: 700; line-height: 1.05; letter-spacing: -0.5px;
+    margin-bottom: 28px;
   }
   .section-sub {
-    font-size: 13px; color: var(--white-dim); line-height: 1.8;
-    max-width: 520px; margin-bottom: 56px;
+    font-size: 17px; color: var(--text-dim); line-height: 1.85;
+    max-width: 620px; margin-bottom: 56px;
   }
 
   /* ─── PREDICTION MARKETS ─── */
@@ -263,7 +319,7 @@
     padding-top: 2px;
   }
   .pm-feature-val {
-    font-size: 12px; color: var(--white-dim); line-height: 1.7;
+    font-size: 14px; color: var(--white-dim); line-height: 1.75;
   }
   .pm-feature-val strong { color: var(--white); }
 
@@ -285,7 +341,7 @@
   .pm-stat-l { font-size: 10px; color: var(--white-dim); letter-spacing: 2px; text-transform: uppercase; }
 
   /* ─── MM / INFRA ─── */
-  .mm-section { background: var(--black2); }
+  .mm-section { background: var(--bg2); }
   .mm-tabs-row {
     display: flex; gap: 0; margin-bottom: 48px;
     border: 1px solid var(--border);
@@ -325,8 +381,8 @@
     margin-bottom: 16px; letter-spacing: -0.3px;
   }
   .mm-card p {
-    font-size: 12px; color: var(--white-dim);
-    line-height: 1.7; margin-bottom: 24px;
+    font-size: 14px; color: var(--white-dim);
+    line-height: 1.75; margin-bottom: 24px;
   }
   .mm-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .mm-tag {
@@ -359,7 +415,7 @@
     font-size: 22px; font-weight: 700; margin-bottom: 16px; line-height: 1.2;
   }
   .license-card p {
-    font-size: 12px; color: var(--white-dim); line-height: 1.8; margin-bottom: 32px;
+    font-size: 14px; color: var(--white-dim); line-height: 1.8; margin-bottom: 32px;
   }
   .license-line {
     font-size: 11px; color: var(--white-faint);
@@ -387,7 +443,7 @@
   }
   .feat-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
   .feat-col li {
-    font-size: 12px; color: var(--white-dim); line-height: 1.5;
+    font-size: 13px; color: var(--white-dim); line-height: 1.6;
     padding-left: 14px; position: relative;
   }
   .feat-col li::before {
@@ -428,14 +484,14 @@
   .whitelist-section {
     padding: 96px 48px;
     border-top: 1px solid var(--border);
-    background: var(--black2);
+    background: var(--bg2);
     display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
   }
   .wl-left h2 {
     font-size: clamp(28px,3.5vw,48px); font-weight: 700; line-height: 1.1;
     margin-bottom: 24px;
   }
-  .wl-left p { font-size: 12px; color: var(--white-dim); line-height: 1.8; margin-bottom: 36px; }
+  .wl-left p { font-size: 15px; color: var(--text-dim); line-height: 1.8; margin-bottom: 36px; }
   .wl-perks { list-style: none; margin-bottom: 40px; }
   .wl-perk {
     padding: 18px 0; border-bottom: 1px solid var(--border);
@@ -443,7 +499,7 @@
   }
   .wl-perk:first-child { border-top: 1px solid var(--border); }
   .wl-perk-key { font-size: 10px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; }
-  .wl-perk-val { font-size: 12px; color: var(--white-dim); line-height: 1.5; }
+  .wl-perk-val { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
   .wl-right {
     border: 1px solid var(--border); padding: 40px;
     position: sticky; top: 100px;
@@ -462,7 +518,7 @@
   footer {
     padding: 48px;
     border-top: 1px solid var(--border);
-    background: var(--black);
+    background: var(--bg);
   }
   .footer-row {
     display: flex; justify-content: space-between; align-items: flex-start;
@@ -632,9 +688,17 @@
     <li><a href="#technology">Technology</a></li>
     <li><a href="/whitelist" class="nav-cta">Apply to Whitelist</a></li>
   </ul>
-  <button class="nav-burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path id="themeIconPath" d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </svg>
+      <span id="themeLabel">Light</span>
+    </button>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- MOBILE MENU -->
@@ -784,8 +848,8 @@
       <ul class="split-bullets">
         <li>Order Book — no liquidity pools, no slippage</li>
         <li>Fully permissionless liquidity — anyone can deploy AMM or market maker</li>
-        <li>Fully permissionless listing</li>
-        <li>Fully permissionless oracles</li>
+        <li>Permissionless listing</li>
+        <li>Permissionless oracles</li>
         <li>Spot and derivatives trading</li>
         <li>High-leverage derivatives available</li>
         <li>No gas fees on a single order book; trading fees are minimal</li>
@@ -808,7 +872,7 @@
       <ul class="split-bullets">
         <li>All user balances are shielded at funding</li>
         <li>All prices in the on-chain order book are shielded</li>
-        <li>All individual orders are hidden pre-execution</li>
+        <li>All individual orders are hidden</li>
         <li>Prices may be disclosed after execution at the trader's discretion</li>
         <li>Order sizes remain hidden — <strong>no order-flow inference, no adversarial routing, no toxic flow selection</strong></li>
       </ul>
@@ -1250,8 +1314,8 @@
         <li>257 validator nodes on 3 continents — and growing</li>
         <li>Decentralized Multicast protocol</li>
         <li>RPC Nodes participate in consensus</li>
-        <li>MEV-resistant by design</li>
         <li>No single point of censorship</li>
+        <li>MEV-resistant by design</li>
         <li>Auto-disclosure on exit</li>
         <li>Privacy targets market manipulation, not transfers</li>
       </ul>
@@ -1265,7 +1329,7 @@
     <div class="pat-num">Patented</div>
     <h2>DEX.DO Patented</h2>
     <p>
-      We took an unusual step in DeFi and patented the Dark Order invention.
+      We took an unusual step in DeFi space and patented the Dark Order invention.
       Dark Order is an Acki Nacki open-source project — available under its license terms.
       The patent exists to protect the network and its users from being replicated by established incumbents without contributing to the ecosystem.
       <br><br>
@@ -1290,8 +1354,8 @@
     <div class="section-eyebrow">For Individual Traders</div>
     <h2>Apply to<br>Whitelist</h2>
     <p>
-      Dark Order is in controlled access. Individual traders apply to the whitelist
-      to get early access to the exchange and all prediction markets before public launch.
+      Dark Order is in controlled access. Individual traders apply to the whitelist to get
+      early access to the exchange and all prediction markets before public launch.
     </p>
     <ul class="wl-perks">
       <li class="wl-perk">
@@ -1347,3 +1411,44 @@
   <div class="footer-bottom">
     <span class="footer-copy">© 2026 GOSH. All rights reserved.</span>
     <span class="footer-patent">US Patent Application № 19/395,2
+  </div>
+</footer>
+
+
+<script>
+(function() {
+  var MOON_PATH = "M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1A5 5 0 1 0 8 3a5 5 0 0 0 0 10zM3.5 7.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm8 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zM8 3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-1 0v1A.5.5 0 0 0 8 3zm0 11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-1 0v1a.5.5 0 0 0 .5.5z";
+  var SUN_PATH = "M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z";
+
+  var html = document.documentElement;
+  var btn   = document.getElementById('themeToggle');
+  var label = document.getElementById('themeLabel');
+  var icon  = document.getElementById('themeIconPath');
+
+  function applyTheme(isLight) {
+    if (isLight) {
+      html.classList.add('light');
+      if (label) label.textContent = 'Dark';
+      if (icon)  icon.setAttribute('d', MOON_PATH);
+    } else {
+      html.classList.remove('light');
+      if (label) label.textContent = 'Light';
+      if (icon)  icon.setAttribute('d', SUN_PATH);
+    }
+  }
+
+  // Restore saved preference
+  var saved = localStorage.getItem('dexdo-theme');
+  applyTheme(saved === 'light');
+
+  if (btn) {
+    btn.addEventListener('click', function() {
+      var isLight = !html.classList.contains('light');
+      applyTheme(isLight);
+      localStorage.setItem('dexdo-theme', isLight ? 'light' : 'dark');
+    });
+  }
+})();
+</script>
+</body>
+</html>
