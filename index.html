@@ -46,13 +46,13 @@ a { color: inherit; text-decoration: none; }
 .nav-logo span { color: var(--red); }
 .nav-links { display: flex; gap: 32px; }
 .nav-links a {
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--text-dim); transition: color 0.2s;
+  font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.78); transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
 .nav-cta {
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  padding: 8px 20px;
+  font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 10px 24px;
   border: 1px solid var(--red); color: var(--red);
   transition: background 0.2s, color 0.2s;
 }
@@ -73,7 +73,7 @@ a { color: inherit; text-decoration: none; }
 .hero-eyebrow {
   display: flex; align-items: center; gap: 16px;
   font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--text-dim); margin-bottom: 40px;
+  color: rgba(255,255,255,0.65); margin-bottom: 40px;
 }
 .hero-eyebrow::before {
   content: ''; width: 40px; height: 1px; background: var(--red);
@@ -84,10 +84,10 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -2px; max-width: 900px;
   margin-bottom: 48px;
 }
-.hero h1 em { font-style: normal; color: var(--text-dim); }
+.hero h1 em { font-style: normal; color: rgba(255,255,255,0.65); }
 .hero-sub {
   font-size: clamp(15px, 1.5vw, 18px);
-  color: var(--text-dim); max-width: 480px;
+  color: rgba(255,255,255,0.75); max-width: 480px;
   line-height: 1.7; margin-bottom: 56px;
   font-family: var(--sans);
 }
@@ -96,17 +96,17 @@ a { color: inherit; text-decoration: none; }
   display: inline-block;
   padding: 16px 36px;
   background: var(--red); color: #fff;
-  font-family: var(--mono); font-size: 12px;
-  letter-spacing: 3px; text-transform: uppercase;
+  font-family: var(--mono); font-size: 16px;
+  letter-spacing: 2px; text-transform: uppercase;
   transition: opacity 0.2s;
 }
 .btn-red:hover { opacity: 0.85; }
 .btn-outline {
   display: inline-block;
   padding: 15px 36px;
-  border: 1px solid var(--border); color: var(--text-dim);
-  font-family: var(--mono); font-size: 12px;
-  letter-spacing: 3px; text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.95);
+  font-family: var(--mono); font-size: 16px;
+  letter-spacing: 2px; text-transform: uppercase;
   transition: border-color 0.2s, color 0.2s;
 }
 .btn-outline:hover { border-color: rgba(255,255,255,0.3); color: var(--text); }
@@ -126,7 +126,7 @@ a { color: inherit; text-decoration: none; }
 .marquee-inner span { display: flex; align-items: center; gap: 64px; }
 .marquee-inner .dot { color: var(--red); }
 @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-.marquee-item { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); }
+.marquee-item { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.68); }
 </style>
 </head>
 <body>
@@ -190,7 +190,7 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid var(--border);
 }
 .section-label {
-  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
   color: var(--red); margin-bottom: 24px;
 }
 .section-h {
@@ -199,7 +199,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -1px; margin-bottom: 24px;
 }
 .section-sub {
-  font-size: 18px; color: var(--text-dim);
+  font-size: 20px; color: rgba(255,255,255,0.75);
   max-width: 560px; line-height: 1.7;
   font-family: var(--sans);
   margin-bottom: 72px;
@@ -219,7 +219,7 @@ a { color: inherit; text-decoration: none; }
 }
 .feat-card:last-child { border-right: none; }
 .feat-num {
-  font-size: 11px; letter-spacing: 2px; color: var(--text-faint);
+  font-size: 12px; letter-spacing: 2px; color: rgba(255,255,255,0.35);
 }
 .feat-icon {
   width: 48px; height: 48px;
@@ -228,11 +228,11 @@ a { color: inherit; text-decoration: none; }
   color: var(--red); font-size: 20px;
 }
 .feat-title {
-  font-size: 18px; font-weight: 700;
-  letter-spacing: 1px; text-transform: uppercase;
+  font-size: 20px; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase;
 }
 .feat-desc {
-  font-size: 14px; color: var(--text-dim);
+  font-size: 16px; color: rgba(255,255,255,0.7);
   line-height: 1.7; font-family: var(--sans);
 }
 
@@ -314,8 +314,8 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--border);
 }
 .stat-row:last-child { border-bottom: none; }
-.stat-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); }
-.stat-value { font-size: 28px; font-weight: 700; }
+.stat-label { font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.72); }
+.stat-value { font-size: 48px; font-weight: 700; }
 .stat-value.red { color: var(--red); }
 </style>
 
@@ -363,24 +363,24 @@ a { color: inherit; text-decoration: none; }
   <div style="margin-top:64px; border:1px solid var(--border);">
     <div style="display:grid; grid-template-columns: repeat(5,1fr); gap:0;">
       <div style="padding:32px 28px; border-right:1px solid var(--border);">
-        <div style="font-size:10px;letter-spacing:2px;color:var(--red);margin-bottom:12px;">PHASE 1</div>
-        <div style="font-size:14px;font-weight:700;">PMP</div>
+        <div style="font-size:12px;letter-spacing:1.5px;color:var(--red);margin-bottom:12px;">PHASE 1</div>
+        <div style="font-size:18px;font-weight:700;">PMP</div>
       </div>
       <div style="padding:32px 28px; border-right:1px solid var(--border);">
-        <div style="font-size:10px;letter-spacing:2px;color:var(--text-faint);margin-bottom:12px;">PHASE 2</div>
-        <div style="font-size:14px;font-weight:700;color:var(--text-dim);">Dark Order Book</div>
+        <div style="font-size:12px;letter-spacing:1.5px;color:rgba(255,255,255,0.45);margin-bottom:12px;">PHASE 2</div>
+        <div style="font-size:18px;font-weight:700;color:rgba(255,255,255,0.65);">Dark Order Book</div>
       </div>
       <div style="padding:32px 28px; border-right:1px solid var(--border);">
-        <div style="font-size:10px;letter-spacing:2px;color:var(--text-faint);margin-bottom:12px;">PHASE 3</div>
-        <div style="font-size:14px;font-weight:700;color:var(--text-dim);">Open Oracle</div>
+        <div style="font-size:12px;letter-spacing:1.5px;color:rgba(255,255,255,0.45);margin-bottom:12px;">PHASE 3</div>
+        <div style="font-size:18px;font-weight:700;color:rgba(255,255,255,0.65);">Open Oracle</div>
       </div>
       <div style="padding:32px 28px; border-right:1px solid var(--border);">
-        <div style="font-size:10px;letter-spacing:2px;color:var(--text-faint);margin-bottom:12px;">PHASE 4</div>
-        <div style="font-size:14px;font-weight:700;color:var(--text-dim);">Full-Set Positions</div>
+        <div style="font-size:12px;letter-spacing:1.5px;color:rgba(255,255,255,0.45);margin-bottom:12px;">PHASE 4</div>
+        <div style="font-size:18px;font-weight:700;color:rgba(255,255,255,0.65);">Full-Set Positions</div>
       </div>
       <div style="padding:32px 28px;">
-        <div style="font-size:10px;letter-spacing:2px;color:var(--text-faint);margin-bottom:12px;">PHASE 5</div>
-        <div style="font-size:14px;font-weight:700;color:var(--text-dim);">Permissionless Markets</div>
+        <div style="font-size:12px;letter-spacing:1.5px;color:rgba(255,255,255,0.45);margin-bottom:12px;">PHASE 5</div>
+        <div style="font-size:18px;font-weight:700;color:rgba(255,255,255,0.65);">Permissionless Markets</div>
       </div>
     </div>
   </div>
@@ -402,7 +402,7 @@ a { color: inherit; text-decoration: none; }
 }
 .mm-card:last-child { border-right: none; }
 .mm-card-label {
-  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--red); margin-bottom: 20px;
 }
 .mm-card-title {
@@ -410,13 +410,13 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 20px;
 }
 .mm-card-desc {
-  font-size: 14px; color: var(--text-dim);
+  font-size: 16px; color: rgba(255,255,255,0.7);
   line-height: 1.7; font-family: var(--sans);
   margin-bottom: 28px;
 }
 .mm-specs { list-style: none; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--border); padding-top: 20px; }
-.mm-spec { display: flex; justify-content: space-between; font-size: 12px; }
-.mm-spec-k { color: var(--text-dim); }
+.mm-spec { display: flex; justify-content: space-between; font-size: 16px; }
+.mm-spec-k { color: rgba(255,255,255,0.65); }
 .mm-spec-v { color: var(--text); font-weight: 600; }
 .mm-spec-v.green { color: #44bb66; }
 </style>
@@ -477,33 +477,23 @@ a { color: inherit; text-decoration: none; }
 
 <!-- ═══ INFRASTRUCTURE / BLOCK MANAGER ═══ -->
 <style>
-.infra-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; border: 1px solid var(--border); margin-top: 64px;
-}
-.infra-left {
-  padding: 56px 48px; border-right: 1px solid var(--border);
-  display: flex; flex-direction: column;
-}
-.infra-right {
-  padding: 56px 48px; display: flex; flex-direction: column; gap: 28px;
-}
-.infra-stat {
-  display: flex; justify-content: space-between; align-items: baseline;
-  padding: 18px 0; border-bottom: 1px solid var(--border);
-}
-.infra-stat:last-child { border-bottom: none; }
-.infra-stat-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); }
-.infra-stat-value { font-size: 26px; font-weight: 700; }
-.infra-stat-value.green { color: #44bb66; }
-.infra-feature { display: flex; gap: 16px; }
-.infra-feature-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
-.infra-feature-text { font-size: 15px; color: var(--text-dim); font-family: var(--sans); line-height: 1.6; }
-.infra-feature-text strong { color: var(--text); font-family: var(--mono); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 4px; }
-@media (max-width: 900px) {
-  .infra-grid { grid-template-columns: 1fr; }
-  .infra-left { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 24px; }
-  .infra-right { padding: 40px 24px; }
+.infra-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); margin-top:64px; }
+.infra-left { padding:56px 48px; border-right:1px solid var(--border); display:flex; flex-direction:column; }
+.infra-right { padding:56px 48px; display:flex; flex-direction:column; gap:28px; }
+.infra-stat { display:flex; justify-content:space-between; align-items:baseline; padding:18px 0; border-bottom:1px solid var(--border); }
+.infra-stat:last-child { border-bottom:none; }
+.infra-stat-label { font-size:14px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.65); }
+.infra-stat-value { font-size:32px; font-weight:700; }
+.infra-stat-value.green { color:#44bb66; }
+.infra-stat-value.red { color:var(--red); }
+.infra-feature { display:flex; gap:16px; }
+.infra-feature-dot { width:6px; height:6px; background:var(--red); border-radius:50%; flex-shrink:0; margin-top:8px; }
+.infra-feature-text { font-size:17px; color:rgba(255,255,255,0.75); font-family:var(--sans); line-height:1.6; }
+.infra-feature-text strong { color:#fff; font-family:var(--mono); font-size:13px; letter-spacing:1px; text-transform:uppercase; display:block; margin-bottom:4px; }
+@media(max-width:900px){
+  .infra-grid{grid-template-columns:1fr;}
+  .infra-left{border-right:none;border-bottom:1px solid var(--border);padding:40px 24px;}
+  .infra-right{padding:40px 24px;}
 }
 </style>
 
@@ -514,64 +504,23 @@ a { color: inherit; text-decoration: none; }
 
   <div class="infra-grid">
     <div class="infra-left">
-      <div class="infra-stat">
-        <span class="infra-stat-label">Revenue Share</span>
-        <span class="infra-stat-value green">Included</span>
-      </div>
-      <div class="infra-stat">
-        <span class="infra-stat-label">Data Redistribution</span>
-        <span class="infra-stat-value green">Full Rights</span>
-      </div>
-      <div class="infra-stat">
-        <span class="infra-stat-label">Setup Time</span>
-        <span class="infra-stat-value">&lt;48h</span>
-      </div>
-      <div class="infra-stat">
-        <span class="infra-stat-label">SLA Uptime</span>
-        <span class="infra-stat-value">99.9%</span>
-      </div>
-      <div class="infra-stat">
-        <span class="infra-stat-label">API Latency</span>
-        <span class="infra-stat-value">&lt;1ms</span>
-      </div>
-      <div class="infra-stat">
-        <span class="infra-stat-label">Licenses Available</span>
-        <span class="infra-stat-value red">Limited</span>
-      </div>
+      <div class="infra-stat"><span class="infra-stat-label">Revenue Share</span><span class="infra-stat-value green">Included</span></div>
+      <div class="infra-stat"><span class="infra-stat-label">Data Redistribution</span><span class="infra-stat-value green">Full Rights</span></div>
+      <div class="infra-stat"><span class="infra-stat-label">Setup Time</span><span class="infra-stat-value">&lt;48h</span></div>
+      <div class="infra-stat"><span class="infra-stat-label">SLA Uptime</span><span class="infra-stat-value">99.9%</span></div>
+      <div class="infra-stat"><span class="infra-stat-label">API Latency</span><span class="infra-stat-value">&lt;1ms</span></div>
+      <div class="infra-stat"><span class="infra-stat-label">Licenses</span><span class="infra-stat-value red">Limited</span></div>
     </div>
-
     <div class="infra-right">
-      <div class="infra-feature">
-        <span class="infra-feature-dot"></span>
-        <div class="infra-feature-text">
-          <strong>Dedicated Matching Engine</strong>
-          Your own parallel matching node per trading pair. Fully isolated, fully yours. Run on Acki Nacki blockchain.
-        </div>
-      </div>
-      <div class="infra-feature">
-        <span class="infra-feature-dot"></span>
-        <div class="infra-feature-text">
-          <strong>Data Redistribution Rights</strong>
-          Monetize order flow data. Sell feeds to third parties. Full commercial rights included in the license.
-        </div>
-      </div>
-      <div class="infra-feature">
-        <span class="infra-feature-dot"></span>
-        <div class="infra-feature-text">
-          <strong>Revenue Sharing</strong>
-          Block managers earn a direct share of protocol fees generated on their infrastructure nodes.
-        </div>
-      </div>
-      <div class="infra-feature">
-        <span class="infra-feature-dot"></span>
-        <div class="infra-feature-text">
-          <strong>First-Mover Advantage</strong>
-          Limited licenses. Early operators lock in preferred economic terms and get priority market listing access.
-        </div>
-      </div>
-      <div style="margin-top:8px;">
-        <a href="#whitelist" class="btn-red" style="display:inline-block;">Apply for License →</a>
-      </div>
+      <div class="infra-feature"><span class="infra-feature-dot"></span>
+        <div class="infra-feature-text"><strong>Dedicated Matching Engine</strong>Your own parallel matching node per trading pair. Fully isolated, running on Acki Nacki blockchain.</div></div>
+      <div class="infra-feature"><span class="infra-feature-dot"></span>
+        <div class="infra-feature-text"><strong>Data Redistribution Rights</strong>Monetize order flow data. Sell feeds to third parties. Full commercial rights included.</div></div>
+      <div class="infra-feature"><span class="infra-feature-dot"></span>
+        <div class="infra-feature-text"><strong>Revenue Sharing</strong>Block managers earn a direct share of protocol fees generated on their infrastructure.</div></div>
+      <div class="infra-feature"><span class="infra-feature-dot"></span>
+        <div class="infra-feature-text"><strong>First-Mover Advantage</strong>Limited licenses. Early operators lock in preferred economic terms and priority listing access.</div></div>
+      <div style="margin-top:8px;"><a href="#whitelist" class="btn-red" style="display:inline-block;">Apply for License →</a></div>
     </div>
   </div>
 
@@ -603,18 +552,18 @@ a { color: inherit; text-decoration: none; }
 }
 .wl-perk:last-child { border-bottom: none; }
 .wl-perk-num { font-size: 11px; color: var(--red); letter-spacing: 1px; flex-shrink: 0; margin-top: 2px; }
-.wl-perk-text { font-size: 15px; color: var(--text-dim); font-family: var(--sans); line-height: 1.5; }
+.wl-perk-text { font-size: 17px; color: rgba(255,255,255,0.75); font-family: var(--sans); line-height: 1.6; }
 .wl-perk-text strong { color: var(--text); font-family: var(--mono); font-weight: 700; display: block; margin-bottom: 4px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
 
 .wl-form-side { padding-top: 8px; }
 .wl-form-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-.wl-form-sub { font-size: 14px; color: var(--text-dim); font-family: var(--sans); margin-bottom: 36px; }
+.wl-form-sub { font-size: 16px; color: rgba(255,255,255,0.7); font-family: var(--sans); margin-bottom: 36px; }
 .form-group { margin-bottom: 20px; }
-.form-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); display: block; margin-bottom: 8px; }
+.form-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); display: block; margin-bottom: 8px; }
 .form-input, .form-select, .form-textarea {
   width: 100%; background: var(--black2);
   border: 1px solid var(--border); color: var(--text);
-  font-family: var(--mono); font-size: 14px;
+  font-family: var(--mono); font-size: 16px;
   padding: 14px 16px; outline: none;
   transition: border-color 0.2s;
 }
@@ -624,8 +573,8 @@ a { color: inherit; text-decoration: none; }
 .form-submit {
   width: 100%; padding: 16px;
   background: var(--red); color: #fff; border: none;
-  font-family: var(--mono); font-size: 12px;
-  letter-spacing: 3px; text-transform: uppercase;
+  font-family: var(--mono); font-size: 14px;
+  letter-spacing: 2px; text-transform: uppercase;
   cursor: pointer; transition: opacity 0.2s; margin-top: 8px;
 }
 .form-submit:hover { opacity: 0.85; }
@@ -669,7 +618,7 @@ a { color: inherit; text-decoration: none; }
     <div class="wl-form-side">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
         <span class="status-dot"></span>
-        <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);">Applications Open</span>
+        <span style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);">Applications Open</span>
       </div>
       <div class="wl-form-title">Apply to Whitelist</div>
       <p class="wl-form-sub">Takes 2 minutes. We review within 48 hours.</p>
@@ -717,7 +666,7 @@ a { color: inherit; text-decoration: none; }
 .footer-logo { font-size: 16px; font-weight: 700; letter-spacing: 3px; }
 .footer-logo span { color: var(--red); }
 .footer-links { display: flex; gap: 32px; }
-.footer-links a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); transition: color 0.2s; }
+.footer-links a { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); transition: color 0.2s; }
 .footer-links a:hover { color: var(--text); }
 .footer-copy { font-size: 11px; color: var(--text-faint); letter-spacing: 1px; }
 
